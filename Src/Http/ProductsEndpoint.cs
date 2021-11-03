@@ -6,20 +6,15 @@ namespace PbaSubContractor
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductsController
+    public class ProductsController : ControllerBase
     {
         [HttpPost]
         [Route("Validate")]
         public async Task<bool> ValidateProduct ([FromBody] Product product){
-            if(!ModelState.IsValid){
-                return await Task.Run(() => {
-                    return false;
-                });
-            } else {
-                return await Task.Run(() => {
-                    return true;
-                });
-            } 
+            return await Task.Run(() => {
+                return (ModelState.IsValid);
+            });
+            
         }
     }
 }

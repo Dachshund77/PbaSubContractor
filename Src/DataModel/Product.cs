@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 namespace PbaSubContractor
 
@@ -8,6 +9,7 @@ namespace PbaSubContractor
         [MinLength(3)]
         public string Name { get; set; }
         [Required]
+        [Range(0,Double.MaxValue)]
         public double Price { get; set; }
         [Required]
         public long NumberInStock { get; set; }

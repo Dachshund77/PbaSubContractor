@@ -11,7 +11,7 @@ namespace PbaSubContractor
         [Route("Validate")]
         public async Task<bool> ValidateCustomer ([FromBody] Customer customer){
             return await Task.Run(() => {
-                return (!ModelState.IsValid);
+                return (ModelState.IsValid);
             });
         }
     }
