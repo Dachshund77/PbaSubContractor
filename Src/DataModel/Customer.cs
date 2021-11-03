@@ -8,5 +8,14 @@ namespace PbaSubContractor
         public string WebsiteUrl { get; set; }
         public string CountryUnicode { get; set; }
         public long CardNumber { get; set; }
+
+        public static bool IsValidSurname(string surName){
+            return true;
+        }
+
+        public static bool IsValidCPR(long cpr){
+            return true;
+        }
     }
+    
 }
