@@ -1,4 +1,3 @@
-
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,15 +5,14 @@ namespace PbaSubContractor
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductsController : ControllerBase
+    public class CustomersController: ControllerBase
     {
         [HttpPost]
         [Route("Validate")]
-        public async Task<bool> ValidateProduct ([FromBody] Product product){
+        public async Task<ActionResult<bool>> ValidateCustomer ([FromBody] Customer customer){
             return await Task.Run(() => {
-                return (ModelState.IsValid);
+                return Ok(ModelState.IsValid);
             });
-            
         }
     }
 }

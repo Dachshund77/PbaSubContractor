@@ -12,20 +12,21 @@ namespace PbaSubContractor
         public string Surname { get; set; }
         
         [Required]
+        [Range(0,long.MaxValue)]
         public long CPR { get; set; }
         
         [Required]
         [RegularExpression(MAIL_REGEXP)]
-    
         public string Mail { get; set; }
         
-        [Required]
         [RegularExpression(URL_REGEXP)]
         public string WebsiteUrl { get; set; }
         
         [StringLength(2)]
         [ValidCountryCode]
         public string CountryUnicode { get; set; }
+        
+        [Range(0,long.MaxValue)]
         public long CardNumber { get; set; }
 
     }
