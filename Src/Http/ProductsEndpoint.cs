@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PbaSubContractor
 {
-    public class CustomerEndpoint
+    [ApiController]
+    [Route("[controller]")]
+    public class ProductsController
     {
         [HttpPost]
         [Route("product")]
-        public async Task<bool> ValidateCustomer ([FromBody] Customer customer){
+        public async Task<bool> ValidateProduct ([FromBody] Product product){
             throw new NotImplementedException();
         }
     }
