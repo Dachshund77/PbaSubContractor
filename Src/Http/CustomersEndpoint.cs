@@ -1,8 +1,5 @@
-using System;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace PbaSubContractor
 {
@@ -12,16 +9,29 @@ namespace PbaSubContractor
     {
         [HttpPost]
         [Route("Validate")]
-        public async Task<bool> ValidateCustomer (Object o){
-            Customer customer;
+        public async Task<bool> ValidateCustomer ([FromBody] Customer customer){
+            if(!ModelState.IsValid){
+                return await Task.Run(() => {
+                    return false;
+                 });
+            };
+
+            return await Task.Run(() => {
+                if(customer.IsValid()){
+                    return true;
+                } else {
+                    return false;
+                } 
+            });
+            
+
+            /*
+            //Customer customer;
             try
             {
-                customer = JsonConvert.DeserializeObject<Customer>(o.ToString());
+                //customer = JsonConvert.DeserializeObject<Customer>(o.ToString());
                 return await Task.Run(() => {
-                if(
-                Customer.IsValidSurname(customer.Surname) &&
-                Customer.IsValidCPR(customer.CPR)
-                ){
+                if(customer.IsValid()){
                     return true;
                 } else {
                     return false;
@@ -32,6 +42,7 @@ namespace PbaSubContractor
             {
                 return false;
             }
+            */
         }
     }
 }
