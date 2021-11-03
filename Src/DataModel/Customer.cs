@@ -24,42 +24,10 @@ namespace PbaSubContractor
         public string WebsiteUrl { get; set; }
         
         [StringLength(2)]
+        [ValidCountryCode]
         public string CountryUnicode { get; set; }
         public long CardNumber { get; set; }
 
-        public static bool IsValidSurname(string surName){
-            return true;
-        }
-
-        public static bool IsValidCPR(long cpr){
-            return true;
-        }
-
-        public static bool IsValidMail(string mail){
-            return true;
-        }
-
-        public static bool IsValidWebSiteUrl(string url){
-            return true;
-        }
-
-        public static bool IsValidCountryUniCode(string url){
-            return true;
-        }
-
-        public static bool IsValid(Customer customer){
-            return (
-                IsValidSurname(customer.Surname) &&
-                IsValidCPR(customer.CPR) &&
-                IsValidMail(customer.Mail) &&
-                IsValidWebSiteUrl(customer.WebsiteUrl) &&
-                IsValidCountryUniCode(customer.CountryUnicode)
-            );
-        }
-
-        public bool IsValid(){
-            return IsValid(this);
-        }
     }
     
 }
