@@ -1,4 +1,4 @@
-using System;
+
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +9,17 @@ namespace PbaSubContractor
     public class ProductsController
     {
         [HttpPost]
-        [Route("product")]
+        [Route("Validate")]
         public async Task<bool> ValidateProduct ([FromBody] Product product){
-            throw new NotImplementedException();
+            if(!ModelState.IsValid){
+                return await Task.Run(() => {
+                    return false;
+                });
+            } else {
+                return await Task.Run(() => {
+                    return true;
+                });
+            } 
         }
     }
 }
